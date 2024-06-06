@@ -71,3 +71,73 @@ def create_users_and_assign_permissions():
     employee_user2.groups.add(employee_group)
 
     print("Users created, permissions assigned, and users added to groups successfully.")
+
+
+
+
+#*************************************************************************************************
+
+# import os
+# import django
+
+# # Set up Django environment
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'base.settings')
+# django.setup()
+
+# from django.contrib.auth.models import Group, Permission, User
+
+# def create_group(name, permissions):
+#     try:
+#         group, created = Group.objects.get_or_create(name=name)
+#         group.permissions.set(permissions)
+#         if created:
+#             print(f"Group '{name}' created successfully.")
+#         else:
+#             print(f"Group '{name}' already exists.")
+#     except Exception as e:
+#         print(f"An error occurred while creating the group '{name}': {e}")
+
+# def create_user(username, password, email, group_name):
+#     try:
+#         user, created = User.objects.get_or_create(username=username)
+#         if created:
+#             user.set_password(password)
+#             user.email = email
+#             user.save()
+#             group = Group.objects.get(name=group_name)
+#             user.groups.add(group)
+#             print(f"User '{username}' created and added to group '{group_name}' successfully.")
+#         else:
+#             print(f"User '{username}' already exists.")
+#     except Group.DoesNotExist:
+#         print(f"Group '{group_name}' does not exist.")
+#     except Exception as e:
+#         print(f"An error occurred while creating the user '{username}': {e}")
+
+# def create_admin_group():
+#     admin_permissions = Permission.objects.all()
+#     create_group('Admin', admin_permissions)
+
+# def create_manager_group():
+#     manager_permissions = Permission.objects.filter(
+#         codename__in=['view_project', 'view_task', 'change_task']
+#     )
+#     create_group('Manager', manager_permissions)
+
+# def create_employee_group():
+#     employee_permissions = Permission.objects.filter(
+#         codename__in=['view_project', 'view_task']
+#     )
+#     create_group('Employee', employee_permissions)
+
+# if __name__ == '__main__':
+#     create_admin_group()
+#     create_manager_group()
+#     create_employee_group()
+    
+#     # Example users
+#     create_user('admin_user', 'password123', 'admin@example.com', 'Admin')
+#     create_user('manager_user', 'password123', 'manager@example.com', 'Manager')
+#     create_user('employee_user', 'password123', 'employee@example.com', 'Employee')
+
+#     print("Groups, permissions, and users created successfully.")
