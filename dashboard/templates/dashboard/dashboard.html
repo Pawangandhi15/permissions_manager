@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Dashboard</h1>
+
+        <div class="card mb-4">
+            <div class="card-header">Products</div>
+            <ul class="list-group list-group-flush">
+                {% for product in products %}
+                    <li class="list-group-item">{{ product.name }} - ${{ product.price }} (Stock: {{ product.stock }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">Orders</div>
+            <ul class="list-group list-group-flush">
+                {% for order in orders %}
+                    <li class="list-group-item">Order {{ order.id }}: {{ order.product.name }} x {{ order.quantity }} on {{ order.order_date }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">Customers</div>
+            <ul class="list-group list-group-flush">
+                {% for customer in customers %}
+                    <li class="list-group-item">{{ customer.name }} - {{ customer.email }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
